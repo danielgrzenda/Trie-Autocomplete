@@ -78,7 +78,9 @@ def search_suffix(arguments, structure):
 
 def print_help(arguments):
     if len(arguments) > 1:
-        raise Exception('Too many arguments supplied to the help function!')
+        raise Exception('''Too many arguments supplied to the help function!
+Type python fix_search.py --help to see the possible arguments.
+Only one is allowed''')
     print(f'''usage: fix_search.py [option] ... [-p str | -s str | file | -]...
 Options and arguments (and corresponding environment variables):
 -h  --help   : get help (you are here!)
