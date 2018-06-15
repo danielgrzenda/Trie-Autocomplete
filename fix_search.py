@@ -1,8 +1,5 @@
 import sys
 import string
-import array
-
-
 
 class AmazingAutoComplete():
 
