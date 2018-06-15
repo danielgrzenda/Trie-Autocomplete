@@ -86,7 +86,9 @@ Options and arguments (and corresponding environment variables):
 -s  --suffix : search for words in the input that end with a suffix
 
 This is O(n) where n is the number characters, because it only has to
-traverse n connections in the Trie. Then it can return the node.contains
+traverse n connections from one Trie node to another.
+Then it can return the node.contains.
+It is also space efficient due to the storing of only node pointers.
 ''')
 
 
