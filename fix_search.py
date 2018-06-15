@@ -15,33 +15,39 @@ class AmazingAutoComplete():
 
     def insert(self, node, string):
         for letter in string:
-            if node.hash[ord(letter) - ord('a')] is not -1:
-                node = node.hash[ord(letter) - ord('a')]
+            if node[ord(letter) - ord('a')] is not -1:
+                node = node[ord(letter) - ord('a')]
                 node.contains.append(string)
             else:
-                node.hash[ord(letter)-ord('a')] = self.TrieNode()
-                node = node.hash[ord(letter)-ord('a')]
+                node[ord(letter)-ord('a')] = self.TrieNode()
+                node = node[ord(letter)-ord('a')]
                 node.contains.append(string)
 
     def insert_backward(self, node, string):
         for letter in string:
-            if node.hash[ord(letter) - ord('a')] is not -1:
-                node = node.hash[ord(letter)-ord('a')]
+            if node[ord(letter) - ord('a')] is not -1:
+                node = node[ord(letter)-ord('a')]
                 node.contains.append(string[::-1])
             else:
-                node.hash[ord(letter)-ord('a')] = self.TrieNode()
-                node = node.hash[ord(letter) - ord('a')]
+                node[ord(letter)-ord('a')] = self.TrieNode()
+                node = node[ord(letter) - ord('a')]
                 node.contains.append(string[::-1])
 
     def get(self, node, string):
         for letter in string:
-            node = node.hash[ord(letter)-ord('a')]
+            node = node[ord(letter)-ord('a')]
         return node.contains
 
     class TrieNode(object):
         def __init__(self):
             self.hash = [-1 for x in string.ascii_lowercase]
             self.contains = []
+
+        def __getitem__(self, index):
+            return self.hash[index]
+
+        def __setitem__(self, index, item):
+            self.hash[index] = item
 
 
 def parse_input():
